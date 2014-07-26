@@ -50,11 +50,23 @@ class Guide
 		when 'find'
 			puts "Finding ..."
 		when 'add'
-			puts "Adding ..."
+			add
 		when 'quit'
 			return :quit
 		else
 			puts "\nI don't understand that command.\n"
+		end
+	end
+
+	def add
+		puts "\nAdd a restaurant\n\n".upcase
+
+		restaurant = Restaurant.build_using_questions
+
+		if restaurant.save
+			puts "\nRestaurant Added\n\n"
+		else
+			puts "\nSave Error: Restaurant not added\n\n"
 		end
 	end
 
